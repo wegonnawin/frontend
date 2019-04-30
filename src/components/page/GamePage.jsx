@@ -6,6 +6,8 @@ import { queryTopKWithTranslations } from '^/api';
 
 import Field from '^/components/molecules/Field';
 import GameStatusBoard from '^/components/molecules/GameStatusBoard';
+import GameEndModal from '^/components/atoms/GameEndModal';
+
 import { mergeDeepRight } from 'ramda';
 
 export default function GamePage() {
@@ -51,6 +53,7 @@ export default function GamePage() {
     <>
       <GameStatusBoard deckCount={deck.length} score={score} />
       <Field field={field} onCardMatched={onCardMatched} onCardDidNotMatched={onCardDidNotMatched} />
+      <GameEndModal log={log} score={score} open={deck.length === 0} />
     </>
   );
 }
