@@ -1,23 +1,20 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import Paper from '@material-ui/core/Paper';
 
-const styles = css`
+const StyledPaper = styled(Paper)`
     width: 184,
     maxWidth: 184,
     height: 210,
-    backgroundColor: "red"
+    backgroundColor: 'red'
 `
 
-const StyledTextarea = styled.textarea`${styles}`
-const StyledSelect = styled.select`${styles}`
-const StyledInput = styled.input`${styles}`
-
 const Card = ({}) => (
-    <Paper className={classes.paper}>
-        <Typography variant="h5" component="h3">
+    <StyledPaper>
+        <Typography variant='h5' component='h3'>
         hello
         </Typography>
-    </Paper>
+    </StyledPaper>
 )
 
-export default Card
+export default Card;

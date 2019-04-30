@@ -12,12 +12,14 @@ const StyledTextarea = styled.textarea`${styles}`
 const StyledSelect = styled.select`${styles}`
 const StyledInput = styled.input`${styles}`
 
-const Field = ({}) => (
-    <Paper className={classes.paper}>
-        <Typography variant="h5" component="h3">
-        hello
-        </Typography>
-    </Paper>
+const Field = ({Card, cards}) => (
+  <Grid key={v1} container spacing={24} className={classes.gridRow}>
+    {cards.map(v2 => (
+    <Grid key={v2} className={classes.card} item xs={4}>
+        {card}
+    </Grid>
+    ))}
+  </Grid>
 )
 
 export default Card
