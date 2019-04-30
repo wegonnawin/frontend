@@ -7,6 +7,9 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.3",
+    "bodybuilder": "^2.2.17",
+    "elasticsearch": "^15.4.1",
+    "lodash": "^4.17.11",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
