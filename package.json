@@ -13,10 +13,10 @@
     "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-redux-hook": "0.0.1",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.5",
     "redux-promise": "^0.6.0",
+    "redux-react-hook": "^3.3.2",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
