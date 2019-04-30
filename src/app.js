@@ -1,11 +1,10 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import Card from './components/atoms/card.js'
+import Card from './components/atoms/Card.jsx'
 
 const renderApp = () => (
-    <Card />
-)
+    <Card sentence='Hello, world' />
+);
 
-const root = document.getElementById('app')
-render(renderApp(), root)
+render(renderApp(), document.getElementById('app'));
