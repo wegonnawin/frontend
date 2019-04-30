@@ -1,10 +1,9 @@
-import React from 'react'
-import { render } from 'react-dom'
+import React from 'react';
+import { render } from 'react-dom';
 
-import Card from './components/atoms/Card.jsx'
+import GamePage from './components/page/GamePage';
 
-const renderApp = () => (
-    <Card sentence='Hello, world' />
+render(
+  <GamePage />,
+  document.getElementById('app')
 );
-
-render(renderApp(), document.getElementById('app'));
