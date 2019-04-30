@@ -3,6 +3,7 @@ import React, { useCallback } from 'react';
 import Card from '^/components/atoms/Card';
 
 import useStaticVariable from '^/utils/useStaticVariable';
+import Grid from '@material-ui/core/Grid';
 
 export default function Field({ field, onCardMatched, onCardDidNotMatched }) {
   const [getLastClickedCard, setLastClickedCard] = useStaticVariable(null);
@@ -18,5 +19,9 @@ export default function Field({ field, onCardMatched, onCardDidNotMatched }) {
     }
   };
 
-  return field.map(card => (<Card key={card.id} sentence={card.sentence} onCardClicked={() => onCardClicked(card)} />));
+  return (
+    <Grid container spacing={16}>
+      {field.map(card => <Card key={card.id} sentence={card.sentence} onCardClicked={() => onCardClicked(card)} />)}
+    </Grid>
+  );
 }

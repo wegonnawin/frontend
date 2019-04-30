@@ -53,7 +53,7 @@ export default function GamePage() {
     <>
       <GameStatusBoard deckCount={deck.length} score={score} />
       <Field field={field} onCardMatched={onCardMatched} onCardDidNotMatched={onCardDidNotMatched} />
-      {deck.length === 0 && (<GameEndModal log={log} score={score} />)}
+      <GameEndModal log={log} score={score} open={deck.length === 0} />
     </>
   );
 }
