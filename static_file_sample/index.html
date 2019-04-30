@@ -19,9 +19,7 @@
 
       // When the window loads, start to initialize the SDK
       FBInstant.initializeAsync().then(function() {
-
         // We can start to load assets
-
         // Now that assets are loaded, call startGameAsync
         FBInstant.startGameAsync().then(onStart);
         FBInstant.player.canSubscribeBotAsync().then(

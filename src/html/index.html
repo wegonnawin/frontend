@@ -77,16 +77,17 @@
 
       // When the window loads, start to initialize the SDK
       FBInstant.initializeAsync().then(function() {
-
         // We can start to load assets
 
         // Now that assets are loaded, call startGameAsync
         FBInstant.startGameAsync().then(onStart);
         FBInstant.player.canSubscribeBotAsync().then(
           can_subscribe => {
+            			$('#hello').html('can_subscribe'+can_subscribe);
             FBInstant.player.subscribeBotAsync().then(
               // Player is subscribed to the bot
             ).catch(function (e) {
+      			$('#hello').html('e'+e);
               // Handle subscription failure
             });
           }
@@ -133,7 +134,7 @@ FBInstant.updateAsync({
   cta: 'Play',
   image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==',
   text: {
-    default: 'Challenges in the Game!',
+    default: 'Check out the sentence!',
   },
   template: 'play_turn',
   data: { incorrects: [[1,2],[3,4]] },

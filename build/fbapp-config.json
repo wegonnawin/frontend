@@ -1,0 +1,40 @@
+{
+  "instant_games": {
+    "custom_update_templates": {
+      "first_place": {
+        "example": "Instant Instant Game"
+      },
+      "play_turn": {
+        "example": "Instant Instant Game"
+      }
+    },
+    "surfaceable_stats": {
+      "rank": {
+        "priority": 1,
+        "order": 1,
+        "label": {
+          "localizations": {
+            "en_US": "Team Meredi"
+          },
+          "fallback": "Team Meredi"
+        },
+        "values": {
+          "0": "Unranked",
+          "1": "Bronze",
+          "2": "Silver",
+          "3": "Gold"
+        }
+      }
+    },
+    "orientation": "PORTRAIT",
+    "override_web_orientation": "LANDSCAPE",
+    "navigation_menu_version": "NAV_FLOATING",
+    "bot": {
+      "subscription_type": "OPT_IN_PUBLIC"
+    },
+    "match_player_config": {
+      "min_context_size": 2,
+      "max_context_size": 20
+    }
+  }
+}

@@ -74,5 +74,5 @@ const queryTopK = (k, locale)=>{
       })
     .build();
 
-    return search(INDEX_SENTENCE, body, k* 5);
+    return search(INDEX_SENTENCE, body, k);
 }

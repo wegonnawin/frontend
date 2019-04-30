@@ -1,0 +1,287 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="full-screen" content="yes"/>
+  <meta name="screen-orientation" content="portrait"/>
+    <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://connect.facebook.net/en_US/fbinstant.6.2.js"></script>
+	<script>
+  game1Data = [
+      {
+        "title": "Subject 1: Basic Dialog",
+            "card": [
+              {
+                "id": "1a",
+                "sentence": "hello",
+                "canGo": ["2a"]
+              },
+              {
+                "id": "1b",
+                "sentence": "Good Morning",
+                "canGo": ["2b"]
+              },
+              {
+                "id": "2a",
+                "sentence": "My Name is...",
+                "canGo": ["2b", "3a", "3b"]
+              },
+              {
+                "id": "2b",
+                "sentence": "What's your name?",
+                "canGo": ["2a", "3a", "3b"]
+              },
+              {
+                "id": "3a",
+                "sentence": "Nice to meet you",
+                "canGo": ["3b", "4c" ]
+              },
+              {
+                "id": "3b",
+                "sentence": "How are you?",
+                "canGo": ["3a", "4a"]
+              },
+              {
+                "id": "4a",
+                "sentence": "I'm not so good.",
+                "canGo": ["5b"]
+              },
+              {
+                "id": "5a",
+                "sentence": "Have a good day!",
+                "canGo": ["5b"]
+              },
+              {
+                "id": "4b",
+                "sentence": "Fine",
+                "canGo": ["4c", "5a", "5b", "5c"]
+              },
+              {
+                "id": "4c",
+                "sentence": "See you.",
+                "canGo": ["5b"]
+              }
+            ]
+      }
+    ];
+  </script>
+  <script type="text/javascript">
+
+
+    window.onload = function() {
+			$('#hello').html(window.screen.width);
+      $('#super-grid .col-sm-4 .card').each(function() { $(this).width((window.screen.width-100)/3) });
+      $('#info-section').hide();
+      initData();
+
+      // When the window loads, start to initialize the SDK
+      FBInstant.initializeAsync().then(function() {
+
+        // We can start to load assets
+
+        // Now that assets are loaded, call startGameAsync
+        FBInstant.startGameAsync().then(onStart);
+        FBInstant.player.canSubscribeBotAsync().then(
+          can_subscribe => {
+            FBInstant.player.subscribeBotAsync().then(
+              // Player is subscribed to the bot
+            ).catch(function (e) {
+              // Handle subscription failure
+            });
+          }
+        );
+      });
+    };
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random( new Date().getMilliseconds()/1000 ) * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+
+function initData() {
+  const arr = shuffle(game1Data[0]["card"]);
+  fillCard(arr);
+}
+
+function fillCard(_arr) {
+  $('#super-grid .col-sm-4 .card p.card-text').each(function() {
+    if (!$.hasData(this)) {
+      const arr = _arr.pop()
+      $(this).data('id', arr.id);
+      $(this).text(arr.sentence);
+    }
+  });
+}
+
+    function onStart() {
+      $('#photo').attr('src', FBInstant.player.getPhoto());
+      $('#player-name').html(FBInstant.player.getName());
+      $('#player-id').html(FBInstant.player.getID());
+      $('#context-type').html(FBInstant.context.getType());
+      $('#qp').html(window.location.search);
+
+    }
+function abc() {
+
+
+FBInstant.updateAsync({
+  action: 'CUSTOM',
+  cta: 'Play',
+  image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==',
+  text: {
+    default: 'Check out the sentence!',
+  },
+  template: 'play_turn',
+  data: { incorrects: [[1,2],[3,4]] },
+  strategy: 'IMMEDIATE',
+  notification: 'NO_PUSH'
+}).then(function() {
+			$('#hello').html(new Date());
+});
+}
+</script>
+<style>
+.super-grid .row {
+  padding: 0 20px;
+}
+.col-sm-4 {
+  display: inline-block;
+  padding: 0 10px;
+}
+.super-grid .card {
+  margin: 5px;
+  border: 1px solid lightgray;
+}
+
+
+</style>
+<link href="https://fonts.googleapis.com/css?family=Kreon" rel="stylesheet">
+<meta charset="UTF-8"/>
+<style>
+* {
+    font-family: 'Kreon', serif;
+}
+</style>
+<script src="https://connect.facebook.net/en_US/fbinstant.6.2.js"></script>
+</head>
+
+<body id="app">
+
+  <header style="height: 50px;">
+    <div style="position: absolute">
+      <div>Subject</div>
+      <div>round</div>
+      <div>deck 4/48</div>
+    </div>
+    <div style="text-align: right">
+      <img id="photo" width="30px" height="30px" class="profile_picture"/>
+      <span id="player-name"></span>
+    </div>
+  </header>
+  <div id="content">
+
+<div class="container" id="super-grid" >
+  <div class="row">
+    <div class="col-sm-4">
+
+<div class="card">
+  <div class="card-body">
+    <p class="card-text"><p>
+  </div>
+</div>
+
+		</div>
+    <div class="col-sm-4">
+
+<div class="card" style="background-color: red">
+  <div class="card-body">
+    <p class="card-text"></p>
+  </div>
+</div>
+
+		</div>
+    <div class="col-sm-4">
+
+<div class="card">
+  <div class="card-body">
+    <p class="card-text"></p>
+  </div>
+</div>
+
+		</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+
+<div class="card">
+  <div class="card-body">
+    <p class="card-text"><p>
+  </div>
+</div>
+
+		</div>
+    <div class="col-sm-4">
+
+<div class="card" style="background-color: red">
+  <div class="card-body">
+    <p class="card-text"></p>
+  </div>
+</div>
+
+		</div>
+    <div class="col-sm-4">
+
+<div class="card">
+  <div class="card-body">
+    <p class="card-text"></p>
+  </div>
+</div>
+
+		</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+
+<div class="card">
+  <div class="card-body">
+    <p class="card-text"><p>
+  </div>
+</div>
+
+		</div>
+    <div class="col-sm-4">
+
+<div class="card" style="background-color: red">
+  <div class="card-body">
+    <p class="card-text"></p>
+  </div>
+</div>
+
+		</div>
+    <div class="col-sm-4">
+
+<div class="card">
+  <div class="card-body">
+    <p class="card-text"></p>
+  </div>
+</div>
+
+		</div>
+  </div>
+
+
+</div>
+
+<button onClick="abc()">do click</button>
+<button onClick="">check it!</button>
+<div id="history">
+  history
+</div>
+
+  </div>
+<script type="text/javascript" src="bundle.js"></script></body>
+</html>

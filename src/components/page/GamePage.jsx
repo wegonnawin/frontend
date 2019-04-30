@@ -10,6 +10,16 @@ import GameEndModal from '^/components/atoms/GameEndModal';
 
 import { mergeDeepRight } from 'ramda';
 
+
+const drawDeck = (deck, k)=>{
+  const cards = deck.slice(0, k);
+  const linkedCards = cards
+    .map(c=>c.link)
+    .map(id=>_.find(deck, c=>c.id=== id));
+  return _.take(_.shuffle(cards.concat(linkedCards)), 9);
+}
+
+
 export default function GamePage() {
   const [{ deck, field, log, score }, updateState] = useReducer((part, prevState) => {
     return mergeDeepRight(part, prevState);
@@ -36,16 +46,32 @@ export default function GamePage() {
         log: {...log, incorrectPairs: [[card1, card2], ...log.incorrectPairs]},
         score: score - 1,
       });
+
+      FBInstant.updateAsync({
+        action: 'CUSTOM',
+        cta: 'Play',
+        image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==',
+        text: {
+          default: 'Check the sentence!',
+        },
+        template: 'play_turn',
+        data: { incorrects: [card1, card2] },
+        strategy: 'IMMEDIATE',
+        notification: 'NO_PUSH'
+      }).then(function() {
+      			$('#hello').html(new Date());
+      });
+
+
       setLastMatchResult(!getLastMatchResult());
     };
 
   useEffect(() => {
-    queryTopKWithTranslations(60, 'eng', 'fra')
+    queryTopKWithTranslations(300, 'eng', 'fra')
       .then(loadedDeck => {
-        const initField = loadedDeck.slice(0, 9);
-        const initDeck = loadedDeck.slice(9);
+        const drawedCards = drawDeck(loadedDeck, 5)
 
-        updateState({ deck: initDeck, field: initField });
+        updateState({ deck: loadedDeck, field: drawedCards });
       }, console.error);
   }, [updateState]);
 
