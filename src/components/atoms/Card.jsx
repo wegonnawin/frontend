@@ -18,7 +18,7 @@ const StyledPaper = styled(Paper)`
   margin: auto;
 `;
 
-function Card({ sentence }) {
+export default function Card({ sentence }) {
  return (
    <StyledGrid>
      <StyledPaper>
@@ -29,5 +29,3 @@ function Card({ sentence }) {
    </StyledGrid>
  );
 }
-
-export default Card;
