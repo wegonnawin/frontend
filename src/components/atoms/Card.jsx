@@ -1,5 +1,4 @@
 import React, { useState, useCallback, useMemo } from 'react';
-
 import mergeCallbacks from '^/utils/mergeCallbacks';
 
 export default function Card({ sentence, onCardClicked }) {
