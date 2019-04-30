@@ -12,7 +12,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -40,5 +40,6 @@ module.exports = {
     alias: {
       '^': resolve('src'),
     },
+    extensions: ['.js', '.jsx', '.mjs'],
   },
 };
