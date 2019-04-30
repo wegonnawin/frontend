@@ -18,14 +18,16 @@ const StyledPaper = styled(Paper)`
   margin: auto;
 `;
 
-const Card = ({ sentence }) => (
-  <StyledGrid>
-    <StyledPaper>
-      <Typography variant='h5' component='h3'>
-        {sentence}
-      </Typography>
-    </StyledPaper>
-  </StyledGrid>
-);
+function Card({ sentence }) {
+ return (
+   <StyledGrid>
+     <StyledPaper>
+       <Typography variant='h5' component='h3'>
+         {sentence}
+       </Typography>
+     </StyledPaper>
+   </StyledGrid>
+ );
+}
 
 export default Card;
