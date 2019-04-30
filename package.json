@@ -11,7 +11,6 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux-hook": "0.0.1",
-    "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.5",
     "redux-promise": "^0.6.0",
