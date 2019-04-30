@@ -1,20 +1,25 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
-import Paper from '@material-ui/core/Paper';
+import styled from 'styled-components'
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
 
-const StyledPaper = styled(Paper)`
-    width: 184,
-    maxWidth: 184,
-    height: 210,
-    backgroundColor: 'red'
+const StyledGrid = styled(Grid)`
+    width: '184px';
+    maxWidth: '184px';
+    height: '210px';
+    background-color: 'red';
+    color: 'red';
 `
 
-const Card = ({}) => (
-    <StyledPaper>
+const Card = () => (
+    <StyledGrid>
+    <Paper>
         <Typography variant='h5' component='h3'>
         hello
         </Typography>
-    </StyledPaper>
+    </Paper>
+    </StyledGrid>
 )
 
-export default Card;
+export default Card

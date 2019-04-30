@@ -12,7 +12,7 @@ const StyledTextarea = styled.textarea`${styles}`
 const StyledSelect = styled.select`${styles}`
 const StyledInput = styled.input`${styles}`
 
-const Field = ({Card, cards}) => (
+const Field = ({cards}) => (
   <Grid key={v1} container spacing={24} className={classes.gridRow}>
     {cards.map(v2 => (
     <Grid key={v2} className={classes.card} item xs={4}>
