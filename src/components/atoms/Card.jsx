@@ -1,31 +1,15 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState, useCallback, useMemo } from 'react';
 
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import mergeCallbacks from '^/utils/mergeCallbacks';
 
-const StyledGrid = styled(Grid)`
-  width: 184px;
-  max-width: 184px;
-  height: 210px;
-`;
+export default function Card({ sentence, onCardClicked }) {
+  const [clicked, setClickState] = useState(false);
+  const turn = useCallback(() => setClickState(!clicked), [clicked, setClickState]);
+  const onClick = useMemo(() => mergeCallbacks(turn, onCardClicked), [turn, onCardClicked]);
 
-const StyledPaper = styled(Paper)`
-  padding-top: theme.spacing.unit * 10;
-  padding-bottom: theme.spacing.unit * 10;
-  height: 100%;
-  margin: auto;
-`;
-
-const Card = ({ sentence }) => (
-  <StyledGrid>
-    <StyledPaper>
-      <Typography variant='h5' component='h3'>
-        {sentence}
-      </Typography>
-    </StyledPaper>
-  </StyledGrid>
-);
-
-export default Card;
+  return (
+    <p onClick={onClick}>
+      {sentence}
+    </p>
+  );
+}
