@@ -6,19 +6,23 @@ import Typography from '@material-ui/core/Typography'
 
 const StyledGrid = styled(Grid)`
     width: 184px;
-    maxWidth: 184px;
+    max-width: 184px;
     height: 210px;
-    background-color: red;
-    color: red;
+`
+const StyledPaper = styled(Paper)`
+    padding-top: theme.spacing.unit * 10;
+    padding-bottom: theme.spacing.unit * 10;
+    height: 100%;
+    margin: auto;
 `
 
 const Card = () => (
     <StyledGrid>
-    <Paper>
+    <StyledPaper>
         <Typography variant='h5' component='h3'>
         hello
         </Typography>
-    </Paper>
+    </StyledPaper>
     </StyledGrid>
 )
 
