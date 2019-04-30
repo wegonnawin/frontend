@@ -31,7 +31,9 @@ module.exports = {
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['build'],
     }),
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: './src/html/index.html'
+    }),
     new HotModuleReplacementPlugin(),
   ],
   resolve: {
