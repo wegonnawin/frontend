@@ -5,11 +5,11 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
 const StyledGrid = styled(Grid)`
-    width: '184px';
-    maxWidth: '184px';
-    height: '210px';
-    background-color: 'red';
-    color: 'red';
+    width: 184px;
+    maxWidth: 184px;
+    height: 210px;
+    background-color: red;
+    color: red;
 `
 
 const Card = () => (
